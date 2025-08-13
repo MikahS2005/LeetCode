@@ -1,0 +1,64 @@
+// Source : https://leetcode.com/problems/reverse-vowels-of-a-string/submissions/1715977086
+// Author :   Mikah Stroude
+// Date   : 13/08/2025
+
+/***************************************************************************************************** 
+ Given a string s, reverse only all the vowels in the string and return it.
+
+The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both lower and upper cases, more than once.
+
+ 
+
+Example 1:
+
+Input: s = "IceCreAm"
+
+Output: "AceCreIm"
+
+Explanation:
+
+The vowels in s are ['I', 'e', 'e', 'A']. On reversing the vowels, s becomes "AceCreIm".
+
+Example 2:
+
+Input: s = "leetcode"
+
+Output: "leotcede"
+
+ 
+
+Constraints:
+
+1 <= s.length <= 3 * 105
+s consist of printable ASCII characters.
+
+/***************************************************************************************************** 
+
+class Solution {
+public:
+    string reverseVowels(string s) {
+
+        string vowels;
+        //determine vowels
+        for(int i=0; i<s.length(); i++){
+            bool isVowel = s[i] == 'A' || s[i] == 'E' || s[i] == 'I' || s[i] == 'O'|| s[i] == 'U'||s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o'|| s[i] == 'u';
+            if(isVowel){
+                vowels += s[i];
+            }
+        }
+        //reverse vowels
+        reverse(vowels.begin(), vowels.end());
+
+        //reverse the vowels in the word
+        int index = 0;
+        for(int k=0; k<s.length(); k++){
+             bool isVowel = s[k] == 'A' || s[k] == 'E' || s[k] == 'I' || s[k] == 'O'|| s[k] == 'U'||s[k] == 'a' || s[k] == 'e' || s[k] == 'i' || s[k] == 'o'|| s[k] == 'u';
+            if(isVowel){
+                s[k] = vowels[index];
+                index++;
+             }
+        }
+
+        return s;
+    }
+};
